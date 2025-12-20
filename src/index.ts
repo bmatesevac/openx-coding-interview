@@ -7,7 +7,10 @@ export function testFunction(input: number): number {
 
 
 function main(): void {
-  console.log("Hello, TypeScript! 1");
+  console.log("Hello OpenX!2");
+
+  const result = testFunction(6);
+  console.log(`testFunction(3) = ${result}`);
 }
 
 main();

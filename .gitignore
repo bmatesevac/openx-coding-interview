@@ -22,7 +22,7 @@ coverage/
 .env.*.local
 
 # IDE/Editor
-.vscode/
+# .vscode/
 .idea/
 *.swp
 *.swo
