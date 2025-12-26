@@ -59,4 +59,46 @@ describe('basic algorithms', () => {
       expect(functs.isPalindrome(input)).toBe(isPalindrome)
    })
 
+   function isEqualTo<T>(set1: T[], set2: T[]): boolean {
+      if (set1.length != set2.length)
+         return false;
+      return set1.every((val) => set2.includes(val));
+   }
+
+   it("Can remove duplicates", () => {
+      const input: number[] = [1, 1, 2, 3, 4, 5, 5]
+      const expected: number[] = [1, 2, 3, 4, 5]
+      const actual = functs.removeDuplicates(input);
+      expect(isEqualTo(expected, actual)).toBe(true);
+   })
+
+   /*
+  
+   */
+
+   interface NonRepeatingTestCase {
+      input: string;
+      expectedOutput: string | null;
+   }
+
+   const nonRepeatingCharTests: NonRepeatingTestCase[] = [
+      {
+         input: 'leetcode',
+         expectedOutput: '1'
+      },
+      {
+         input: 'loveleetcode',
+         expectedOutput: 'v'
+      },
+      {
+         input: 'aabb',
+         expectedOutput: null
+      }
+   ]
+
+   it.each(nonRepeatingCharTests)("Can find first non-repeating in $input", ({ input, expectedOutput }) => {
+
+
+   });
+
 });

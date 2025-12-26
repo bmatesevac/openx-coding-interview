@@ -59,3 +59,28 @@ export function isPalindrome(str: string): boolean {
    // }
    // return true;
 }
+
+export function removeDuplicates<T>(arr: T[]): T[] {
+   return [...new Set(arr)];
+
+   // Alternative: using filter
+   // return arr.filter((item, index) => arr.indexOf(item) === index);
+}
+
+export function firstNonRepeating(str: string): string | null {
+   const charCount = new Map<string, number>();
+
+   // Count occurrences
+   for (const char of str) {
+      charCount.set(char, (charCount.get(char) || 0) + 1);
+   }
+
+   // Find first with count 1
+   for (const char of str) {
+      if (charCount.get(char) === 1) {
+         return char;
+      }
+   }
+
+   return null;
+}
