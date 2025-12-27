@@ -147,3 +147,14 @@ export function mergeSortedArrays(arr1: number[], arr2: number[]): number[] {
 export function countWords(str: string): number {
     return str.trim().split(/\s+/).filter(word => word.length > 0).length;
 }
+
+/*
+Given an array containing n distinct numbers from 0 to n, find the missing number.
+*/
+
+export function findMissingNumber(nums: number[]): number {
+    const n = nums.length;
+    const expectedSum = (n * (n + 1)) / 2;
+    const actualSum = nums.reduce((sum, num) => sum + num, 0);
+    return expectedSum - actualSum;
+}

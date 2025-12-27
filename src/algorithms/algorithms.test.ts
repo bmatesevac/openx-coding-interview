@@ -156,7 +156,7 @@ describe('basic algorithms', () => {
          array1: [1, 2, 3],
          array2: [4, 5, 6],
          expectedResult: [1, 2, 3, 4, 5, 6]
-      }, 
+      },
       {
          array1: [1, 2, 3, 8],
          array2: [6, 7, 9],
@@ -164,8 +164,7 @@ describe('basic algorithms', () => {
       }
    ]
 
-   it.each(mergeSortedArrayTests)("Can correctly sort arrays",({ array1, array2, expectedResult}) =>
-   {
+   it.each(mergeSortedArrayTests)("Can correctly sort arrays", ({ array1, array2, expectedResult }) => {
       const actualResult = functs.mergeSortedArrays(array1, array2);
       expect(isArrayEqualTo(actualResult, expectedResult)).toBe(true)
 
@@ -176,19 +175,46 @@ describe('basic algorithms', () => {
       expectedCount: number;
    }
 
-   const wordCountTests : WordCountTest[] = [
+   const wordCountTests: WordCountTest[] = [
       {
          words: "Hello world from TypeScript",
          expectedCount: 4
 
       },
-      { 
-         words:  "  Multiple   spaces  ",
+      {
+         words: "  Multiple   spaces  ",
          expectedCount: 2
       }
    ]
 
+   it.each(wordCountTests)("Can correctly count words in '$words'", ({ words, expectedCount }) => {
+      expect(functs.countWords(words)).toBe(expectedCount);
 
-   
+   })
+
+   interface MissingNumberTest {
+      input: number[];
+      expectedResult: number
+   }
+
+   const missingNumberTests: MissingNumberTest[] = [
+      {
+         input: [3, 0, 1],
+         expectedResult: 2
+      },
+      {
+         input: [0, 1, 2, 4, 5],
+         expectedResult: 3
+      }
+   ]
+
+   it.each(missingNumberTests)("Can find missing number $expectedResult", ({input, expectedResult}) => {
+      expect(functs.findMissingNumber(input)).toBe(expectedResult);
+
+   });
+
+
+
+
 
 });
