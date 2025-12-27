@@ -1,4 +1,4 @@
-import * as functs from './basic-algorithms';
+import * as basic from './basic-algorithms';
 
 function isEqualTo<T>(set1: T[], set2: T[]): boolean {
    if (set1.length != set2.length)
@@ -17,20 +17,20 @@ function isArrayEqualTo(array1: number[], array2: number[]): boolean {
 describe('basic algorithms', () => {
    it('should sum an array', () => {
       const arr: number[] = [1, 2, -1, 3]
-      expect(functs.sumArray(arr)).toBe(5);
+      expect(basic.sumArray(arr)).toBe(5);
    });
 
    it('can reverse a string', () => {
 
       const input: string = "TypeScript"
       const output: string = "tpircSepyT"
-      expect(functs.reverseString(input)).toBe(output);
+      expect(basic.reverseString(input)).toBe(output);
    });
 
    it('can find max of an array', () => {
 
       const input: number[] = [3, 7, 2, 9, 1]
-      expect(functs.findMax(input)).toBe(9);
+      expect(basic.findMax(input)).toBe(9);
    });
 
    interface CountVowelsTest {
@@ -50,7 +50,7 @@ describe('basic algorithms', () => {
    ]
 
    it.each(countVowelsTests)('can count vowels "$input"', ({ input, expectedCount }) => {
-      expect(functs.countVowels(input)).toBe(expectedCount);
+      expect(basic.countVowels(input)).toBe(expectedCount);
    });
 
    interface PalindromeTest {
@@ -70,7 +70,7 @@ describe('basic algorithms', () => {
    ]
 
    it.each(palindromeTests)("Check string '$input' for palindrome", ({ input, isPalindrome }) => {
-      expect(functs.isPalindrome(input)).toBe(isPalindrome)
+      expect(basic.isPalindrome(input)).toBe(isPalindrome)
    })
 
 
@@ -78,7 +78,7 @@ describe('basic algorithms', () => {
    it("Can remove duplicates", () => {
       const input: number[] = [1, 1, 2, 3, 4, 5, 5]
       const expected: number[] = [1, 2, 3, 4, 5]
-      const actual = functs.removeDuplicates(input);
+      const actual = basic.removeDuplicates(input);
       expect(isEqualTo(expected, actual)).toBe(true);
    })
 
@@ -108,7 +108,7 @@ describe('basic algorithms', () => {
 
    it.each(nonRepeatingCharTests)("Can find first non-repeating in $input", ({ input, expectedOutput }) => {
 
-      expect(functs.firstNonRepeating(input)).toBe(expectedOutput);
+      expect(basic.firstNonRepeating(input)).toBe(expectedOutput);
    });
 
    interface TwoSumTest {
@@ -136,7 +136,7 @@ describe('basic algorithms', () => {
    ]
 
    it.each(twoSumTests)("Can find target $target", ({ input, target, expectedResult }) => {
-      var actualResult = functs.twoSum(input, target);
+      var actualResult = basic.twoSum(input, target);
       expect(isArrayEqualTo(actualResult, expectedResult)).toBe(true);
    });
 
@@ -165,7 +165,7 @@ describe('basic algorithms', () => {
    ]
 
    it.each(mergeSortedArrayTests)("Can correctly sort arrays", ({ array1, array2, expectedResult }) => {
-      const actualResult = functs.mergeSortedArrays(array1, array2);
+      const actualResult = basic.mergeSortedArrays(array1, array2);
       expect(isArrayEqualTo(actualResult, expectedResult)).toBe(true)
 
    })
@@ -188,7 +188,7 @@ describe('basic algorithms', () => {
    ]
 
    it.each(wordCountTests)("Can correctly count words in '$words'", ({ words, expectedCount }) => {
-      expect(functs.countWords(words)).toBe(expectedCount);
+      expect(basic.countWords(words)).toBe(expectedCount);
 
    })
 
@@ -209,7 +209,7 @@ describe('basic algorithms', () => {
    ]
 
    it.each(missingNumberTests)("Can find missing number $expectedResult", ({input, expectedResult}) => {
-      expect(functs.findMissingNumber(input)).toBe(expectedResult);
+      expect(basic.findMissingNumber(input)).toBe(expectedResult);
 
    });
 
