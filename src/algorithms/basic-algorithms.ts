@@ -84,3 +84,66 @@ export function firstNonRepeating(str: string): string | null {
 
    return null;
 }
+
+export function twoSum(numbers: number[], target: number): number[] {
+   let left = 0;
+   let right = numbers.length - 1;
+
+   while (left < right) {
+      const sum = numbers[left] + numbers[right];
+
+      if (sum === target) {
+         return [left, right];
+      } else if (sum < target) {
+         left++;
+      } else {
+         right--;
+      }
+   }
+
+   return []; // No solution found
+}
+
+export function mergeSortedArrays(arr1: number[], arr2: number[]): number[] {
+   const useOld = false;
+   if (useOld) {
+
+      const result: number[] = [];
+      let i = 0, j = 0;
+
+      while (i < arr1.length && j < arr2.length) {
+         if (arr1[i] < arr2[j]) {
+            result.push(arr1[i]);
+            i++;
+         } else {
+            result.push(arr2[j]);
+            j++;
+         }
+      }
+
+      // Add remaining elements
+      while (i < arr1.length) {
+         result.push(arr1[i]);
+         i++;
+      }
+
+      while (j < arr2.length) {
+         result.push(arr2[j]);
+         j++;
+      }
+      return result;
+   }
+
+
+
+   const combinedArray: number[] = [...arr1, ...arr2];
+   const result = combinedArray.sort();
+
+
+
+   return result;
+}
+
+export function countWords(str: string): number {
+    return str.trim().split(/\s+/).filter(word => word.length > 0).length;
+}
