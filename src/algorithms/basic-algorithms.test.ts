@@ -213,6 +213,50 @@ describe('basic algorithms', () => {
 
    });
 
+   interface capitalizeWordsTest {
+      input: string;
+      expectedOutput: string;
+   }
+
+   const capitalizeWordsTests : capitalizeWordsTest[] = [
+      {
+         input: "this is a test",
+         expectedOutput: "This Is A Test"
+      },
+      {
+         input: "tHIS iS A tEST",
+         expectedOutput: "This Is A Test"
+      }
+   ]
+
+   it.each(capitalizeWordsTests)("Properly capitalizes '$input", ({input, expectedOutput}) => {
+      const result = basic.capitalizeWords(input);
+      expect(basic.capitalizeWords(input)).toBe(expectedOutput);
+   });
+
+   interface IsAnagramTest {
+      string1: string;
+      string2: string;
+      expectedOutput: boolean;
+   }
+
+   const isAnagramTests : IsAnagramTest[] = [
+      {
+         string1: "listen", 
+         string2: "silent",
+         expectedOutput: true
+      },
+      {
+         string1: "hello",
+         string2: "world",
+         expectedOutput: false
+      }
+   ]
+
+   it.only.each(isAnagramTests)("Correctly determines if '$sring1' '$string2' is an anagram", ({string1, string2, expectedOutput}) => {
+      expect(basic.isAnagram(string1, string2)).toBe(expectedOutput);
+   })
+
 
 
 

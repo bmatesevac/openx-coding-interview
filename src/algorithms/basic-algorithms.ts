@@ -145,7 +145,7 @@ export function mergeSortedArrays(arr1: number[], arr2: number[]): number[] {
 }
 
 export function countWords(str: string): number {
-    return str.trim().split(/\s+/).filter(word => word.length > 0).length;
+   return str.trim().split(/\s+/).filter(word => word.length > 0).length;
 }
 
 /*
@@ -153,8 +153,51 @@ Given an array containing n distinct numbers from 0 to n, find the missing numbe
 */
 
 export function findMissingNumber(nums: number[]): number {
-    const n = nums.length;
-    const expectedSum = (n * (n + 1)) / 2;
-    const actualSum = nums.reduce((sum, num) => sum + num, 0);
-    return expectedSum - actualSum;
+   const n = nums.length;
+   const expectedSum = (n * (n + 1)) / 2;
+   const actualSum = nums.reduce((sum, num) => sum + num, 0);
+   return expectedSum - actualSum;
+}
+
+// Capitalize the first letter of each word in a string.
+
+export function capitalizeWords(words: string): string {
+
+   return words.split(' ')
+      .map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+      .join(' ');
+
+}
+
+// Split an array into chunks of specified size.
+export function chunkArray<T>(array: T[], size: number): T[][] {
+   const result: T[][] = [];
+
+   for (let index = 0; index < array.length; index += size) {
+      result.push(array.slice(index, size));
+   }
+   return result;
+
+
+}
+
+export function isAnagram(str1: string, str2: string): boolean {
+   const charCount = new Map<string, number>();
+
+   if (str1.length !== str2.length) return false;
+
+   for (const char of str1) {
+      charCount.set(char, ((charCount.get(char) || 0) + 1))
+   }
+
+   for (const char of str2) {
+
+      const count = charCount.get(char);
+      if (!count) return false;
+      charCount.set(char, count - 1);
+
+   }
+
+   return true;
+
 }
