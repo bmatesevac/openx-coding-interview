@@ -1,18 +1,6 @@
 import * as sut from './basic-algorithms';
+import * as inf from './test-infrastructure'
 
-function isEqualTo<T>(set1: T[], set2: T[]): boolean {
-   if (set1.length != set2.length)
-      return false;
-   return set1.every((val) => set2.includes(val));
-}
-
-function isArrayEqualTo(array1: number[], array2: number[]): boolean {
-   if (array1.length != array2.length)
-      return false;
-   return array1.every((value, index) => {
-      return (array2[index] === value);
-   });
-}
 
 describe('basic algorithms', () => {
    it('should sum an array', () => {
@@ -79,7 +67,7 @@ describe('basic algorithms', () => {
       const input: number[] = [1, 1, 2, 3, 4, 5, 5]
       const expected: number[] = [1, 2, 3, 4, 5]
       const actual = sut.removeDuplicates(input);
-      expect(isEqualTo(expected, actual)).toBe(true);
+      expect(inf.isEqualTo(expected, actual)).toBe(true);
    })
 
    /*
@@ -137,7 +125,7 @@ describe('basic algorithms', () => {
 
    it.each(twoSumTests)("Can find target $target", ({ input, target, expectedResult }) => {
       var actualResult = sut.twoSum(input, target);
-      expect(isArrayEqualTo(actualResult, expectedResult)).toBe(true);
+      expect(inf.isArrayEqualTo(actualResult, expectedResult)).toBe(true);
    });
 
    interface MergeSortedArrayTest {
@@ -166,7 +154,7 @@ describe('basic algorithms', () => {
 
    it.each(mergeSortedArrayTests)("Can correctly sort arrays", ({ array1, array2, expectedResult }) => {
       const actualResult = sut.mergeSortedArrays(array1, array2);
-      expect(isArrayEqualTo(actualResult, expectedResult)).toBe(true)
+      expect(inf.isArrayEqualTo(actualResult, expectedResult)).toBe(true)
 
    })
 
@@ -253,7 +241,7 @@ describe('basic algorithms', () => {
       }
    ]
 
-   it.each(isAnagramTests)("Correctly determines if '$sring1' '$string2' is an anagram", ({ string1, string2, expectedOutput }) => {
+   it.each(isAnagramTests)("Correctly determines if '$string1' '$string2' is an anagram", ({ string1, string2, expectedOutput }) => {
       expect(sut.isAnagram(string1, string2)).toBe(expectedOutput);
    })
 
