@@ -22,10 +22,36 @@ describe("medium algorithms", () => {
       }
    ]
 
-   it.only.each(rotateArrayTests)("Can rotate $input by $count", ({ input, count, expectedOutput }) => {
+   it.each(rotateArrayTests)("Can rotate $input by $count", ({ input, count, expectedOutput }) => {
       const actualOutput = sut.rotateArray(input, count);
       expect(inf.isArrayEqualTo(actualOutput, expectedOutput)).toBe(true);
    })
+
+   interface MaxSubstringTest {
+      input: string;
+      expectedOutput: number;
+   }
+
+   const maxSubstringTests: MaxSubstringTest[] = [
+      {
+         input: "abcabcbb",
+         expectedOutput: 3
+      },
+      {
+         input: "bbbbb",
+         expectedOutput: 1
+      },
+      {
+         input: "pwwkew",
+         expectedOutput: 3
+      }
+   ]
+
+   it.only.each(maxSubstringTests)("Max substring size of '$input' should be $expectedOutput", ({ input, expectedOutput }) => {
+      expect(sut.findLongestSubstringLength(input)).toBe(expectedOutput);
+   })
+
+
 
 
 })
