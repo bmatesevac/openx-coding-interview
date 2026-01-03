@@ -11,3 +11,14 @@ export function isArrayEqualTo(array1: number[], array2: number[]): boolean {
       return (array2[index] === value);
    });
 }
+
+export function arrayDeepEqual(a: any, b: any): boolean {
+    if (a === b) return true;
+    
+    if (Array.isArray(a) && Array.isArray(b)) {
+        if (a.length !== b.length) return false;
+        return a.every((val, index) => arrayDeepEqual(val, b[index]));
+    }
+    
+    return false;
+}

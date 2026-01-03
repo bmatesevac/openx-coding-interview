@@ -47,9 +47,28 @@ describe("medium algorithms", () => {
       }
    ]
 
-   it.only.each(maxSubstringTests)("Max substring size of '$input' should be $expectedOutput", ({ input, expectedOutput }) => {
+   it.each(maxSubstringTests)("Max substring size of '$input' should be $expectedOutput", ({ input, expectedOutput }) => {
       expect(sut.findLongestSubstringLength(input)).toBe(expectedOutput);
    })
+
+   interface GroupAnagramsTest {
+      inputs: string[];
+      expectedOutput: string[][];
+   }
+
+   const groupAnagramsTests: GroupAnagramsTest[] = [
+      {
+         inputs: ["eat", "tea", "tan", "ate", "nat", "bat"],
+         expectedOutput: [["eat", "tea", "ate"], ["tan", "nat"], ["bat"]]
+      }
+   ]
+
+   it.each(groupAnagramsTests)("inputs $inputs", ({ inputs, expectedOutput }) => {
+
+      const actualOutput = sut.groupAnagrams(inputs);
+
+   });
+
 
 
 

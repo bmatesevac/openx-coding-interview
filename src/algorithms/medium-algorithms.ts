@@ -23,46 +23,34 @@ function reverse(arr: number[], start: number, end: number): void {
 }
 
 export function findLongestSubstringLength(input: string): number {
-   let maxWindowSize = 0;
+   let maxSubstringLength = 0;
    let left = 0;
-   let right = 0;
    let curChars = new Set<string>();
+   let maxSubstring = "";
 
-   console.log(input);
-
-   while (right < input.length) {
-      const char = input[right];
-      if (curChars.has(char))
-         break;
-      curChars.add(char);
-      maxWindowSize++
-      right++;
-   }
-
-   // slide the window 
-   while (right < input.length) {
+   for (let right=0 ; right < input.length ; ++right) {
       const rChar = input[right];
-      if (!curChars.has(rChar)) {
-         curChars.add(rChar)
-         continue;
+      while (curChars.has(rChar)) {
+         curChars.delete(input[left++]);
       }
 
-      // slide left until char matches
-      while (left < right) {
-         let lChar = input[left++];
-         curChars.delete(lChar);
-         if (lChar == rChar)
-            break;
-         ++left;
+      curChars.add(rChar);
+      const substringLength = right - left + 1;
+      if (substringLength > maxSubstringLength) {
+         maxSubstringLength = substringLength;
+         maxSubstring = input.substring(left, right + 1)
       }
-      const windowSize = right - left;
-      maxWindowSize = Math.max(windowSize, maxWindowSize);
-      right++;
    }
-   return maxWindowSize;
+   return maxSubstringLength;
+}
 
-
-
-
-
+export function groupAnagrams(strs: string[]): string[][] {
+   const groups = new Map<string, string[]>();
+   for(const str of strs) {
+      const key = str.split('').sort().join('');
+      if (!groups.has(key))
+         groups.set(key, []) ;
+      groups.get(key)!.push(str);
+   }
+   return Array.from(groups.values());
 }
