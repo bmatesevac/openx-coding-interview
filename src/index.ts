@@ -7,10 +7,7 @@ export function testFunction(input: number): number {
 
 
 function main(): void {
-  console.log("Hello OpenX!2");
-
-  const result = testFunction(6);
-  console.log(`testFunction(3) = ${result}`);
+  console.log("Hello OpenX!");
 }
 
 main();
