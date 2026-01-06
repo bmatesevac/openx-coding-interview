@@ -1,5 +1,7 @@
 
 import * as sut from './claude-interactive-questions'
+import { CategoryNode }from './claude-interactive-questions'
+
 
 describe("runAuction tests", () => {
 
@@ -44,6 +46,40 @@ describe("runAuction tests", () => {
 
     describe("edge cases", () => {
         it.todo('returns null winner when no bids passed in')
+    })
+})
+
+describe('category id recursion', () => {
+    it("works correctly for simple test", () => {
+        const autoCategory: CategoryNode = {
+            id: "IAB2",
+            name: "Automotive",
+            children: [
+                {
+                    id: "IAB2-1",
+                    name: "Auto Parts",
+                    children: []
+                },
+                {
+                    id: "IAB2-2",
+                    name: "Auto Repair",
+                    children: [
+                        { id: "IAB2-2-1", name: "Brakes", children: [] },
+                        { id: "IAB2-2-2", name: "Tires", children: [] }
+                    ]
+                },
+                {
+                    id: "IAB2-3",
+                    name: "Buying/Selling Cars",
+                    children: []
+                }
+            ]
+        };
+
+
+        expect(sut.getAllCategoryIds(autoCategory)).toEqual(["IAB2", "IAB2-1", "IAB2-2", "IAB2-2-1", "IAB2-2-2", "IAB2-3"]);
+
+
     })
 })
 

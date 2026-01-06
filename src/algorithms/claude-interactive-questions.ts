@@ -104,3 +104,29 @@ export function runDealAuction(bids: Bid[], config: AuctionConfig): AuctionResul
 
     return { winner, clearingPrice, winningDealId : winner.dealId || null};
 }
+
+export interface CategoryNode {
+    id: string;           // e.g., "IAB2", "IAB2-1"
+    name: string;         // e.g., "Automotive", "Auto Parts"
+    children: CategoryNode[];
+}
+
+/**
+ * Recursively collect all category IDs from a category tree
+ * 
+ * @param node - Root node of category tree
+ * @returns Array of all category IDs in the tree (including root)
+ * 
+ * Example:
+ *   getAllCategoryIds(autoCategory)
+ *   → ["IAB2", "IAB2-1", "IAB2-2", "IAB2-2-1", "IAB2-2-2", "IAB2-3"]
+ * 
+ * Order: Parent should come before its children (pre-order traversal)
+ */
+export function getAllCategoryIds(node: CategoryNode): string[] {
+    let results : string[] = [ node.id ];
+    for(const child of node.children) {
+        results.push(...getAllCategoryIds(child));
+    }
+    return results;
+}
