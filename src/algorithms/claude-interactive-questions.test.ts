@@ -1,6 +1,6 @@
 
 import * as sut from './claude-interactive-questions'
-import { CategoryNode }from './claude-interactive-questions'
+import { CategoryNode, getAllCategoryIds }from './claude-interactive-questions'
 
 
 describe("runAuction tests", () => {
@@ -77,7 +77,7 @@ describe('category id recursion', () => {
         };
 
 
-        expect(sut.getAllCategoryIds(autoCategory)).toEqual(["IAB2", "IAB2-1", "IAB2-2", "IAB2-2-1", "IAB2-2-2", "IAB2-3"]);
+        expect(getAllCategoryIds(autoCategory)).toEqual(["IAB2", "IAB2-1", "IAB2-2", "IAB2-2-1", "IAB2-2-2", "IAB2-3"]);
 
 
     })
